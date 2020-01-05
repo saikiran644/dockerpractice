@@ -9,9 +9,14 @@ scripts:
     - docker run -e CI=true sai/travisci npm run test -- --coverage
     
 deploy:
-    provider: elasticbeanstalks
+    provider: elasticbeanstalk
     region: ap-south-1
-    env:
-    app:
-    
-    
+    app: dockerpractice
+    env: Dockerpractice-env
+    bucket_name: elasticbeanstalk-ap-south-1-820174258584
+    bucket_path: dockerpractice
+    access_key_id: $ACCESS_KEY_ID
+    secret_access_key:
+        secure: $SECRET_ACCESS_KEY
+    on:
+        branch: master
