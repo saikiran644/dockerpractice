@@ -6,5 +6,12 @@ before_install:
     - docker build -t sai/travisci -f Dockerfile.dev .
 
 scripts:
-    - docker run sai/travisci npm run test -- --coverage
+    - docker run -e CI=true sai/travisci npm run test -- --coverage
+    
+deploy:
+    provider: elasticbeanstalks
+    region: ap-south-1
+    env:
+    app:
+    
     
